@@ -6,6 +6,7 @@ package com.main;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.test.ioc.LocationProps;
 import com.test.ioc.Player;
 
 /**
@@ -43,6 +44,13 @@ public class IOCDemoMain {
 				
 		obj = (Player) context.getBean("childPlayerBeanCollectionMerge");
 		println("\n ChildPlayerBeanCollectionMerge : \n"+obj.toString());
+		
+		
+		
+		LocationProps props = (LocationProps) context.getBean("locationFromProperties");
+		println("\n LocationFromProperties : \n"+props.toString());
+		
+		
 	}
 	
 	public static void println(String message){

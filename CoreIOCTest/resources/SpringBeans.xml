@@ -104,5 +104,28 @@
     	</set>
     </property>
    </bean>
+   
+   <!-- To inject properties into object -->
+   
+   <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+ 
+		<property name="location">
+			<value>location.properties</value>
+		</property>
+	</bean>
+	
+	<bean name="locationFromProperties" class="com.test.ioc.LocationProps">
+		<property name="city" value="${location.city}"/>
+		<property name="zipcode"  ref="zipcodeInteger"/>
+		<property name="state" value="${location.state}"/>
+		<property name="country" value="${location.country}"/>
+	</bean>
+	
+	<bean name="zipcodeInteger" class="java.lang.Integer">
+	<constructor-arg index="0" type="java.lang.String" value="${location.zipcode}"/>
+	</bean>
+
+	
+	<!-- END -->
  
 </beans>
