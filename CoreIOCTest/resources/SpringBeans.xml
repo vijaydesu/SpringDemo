@@ -94,5 +94,15 @@
    		   		
    </bean>
    
+   
+   <bean name="childPlayerBeanCollectionMerge" parent="playerBeanCollections">
+    <property name="citiesVisited">
+    	<set value-type="java.lang.String" merge="true">
+    		<value>KOLKATA</value>
+    		<value>KARACHI</value>
+    		<value>SYDNEY</value>
+    	</set>
+    </property>
+   </bean>
  
 </beans>

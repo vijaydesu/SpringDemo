@@ -39,6 +39,10 @@ public class IOCDemoMain {
 		
 		obj = (Player) context.getBean("playerBeanCollections");
 		println("\n PlayerBeanCollections : \n"+obj.toString());
+		
+				
+		obj = (Player) context.getBean("childPlayerBeanCollectionMerge");
+		println("\n ChildPlayerBeanCollectionMerge : \n"+obj.toString());
 	}
 	
 	public static void println(String message){
