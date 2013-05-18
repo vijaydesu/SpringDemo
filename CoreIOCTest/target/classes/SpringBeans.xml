@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+   <bean name="playerBeanConstructor" class="com.test.ioc.Player">
+   		
+   		<constructor-arg type="int" index="0" value="4321"/>
+   		<constructor-arg>   			
+   			<value>M S DHONI</value>
+   		</constructor-arg>
+   		<constructor-arg value="America"/>
+   		   		
+   </bean>
+   
+   <bean name="playerBeanConstructorAmbiguityIssue" class="com.test.ioc.Player">
+   		
+   		<constructor-arg  value="4321"/>
+   		<constructor-arg>   			
+   			<value>M S DHONI</value>
+   		</constructor-arg>
+   		<constructor-arg value="America"/>
+   		
+   		   		
+   </bean>
+   
+   
+   <bean name="playerBeanConstructorAmbiguityResolve" class="com.test.ioc.Player">
+   		
+   		<constructor-arg type="int" index="0" value="4321"/>
+   		<constructor-arg type="java.lang.String" index="1" value="M S DHONI"/>
+   		<constructor-arg type="java.lang.String" index="2" value="America"/>
+   		   		
+   </bean>
+   
+    <bean name="playerBeanSetter" class="com.test.ioc.Player">
+   		
+   		<property name="id" value="4321"/>
+   		<property name="name" value="M S DHONI"></property>
+   		<property name="city">
+   		<value>UNITED STATES OF AMERICA</value>
+   		</property>
+   		   		
+   </bean>
+   
+   <bean name="playerBeanCollections" class="com.test.ioc.Player">
+   		
+   		<property name="id" value="4321"/>
+   		<property name="name" value="M S DHONI"/>
+   		<property name="city" value="India" />		
+   		
+   		<property name="teamList">
+   			<list value-type="java.lang.String">
+   				<value>INDIA</value>
+   				<value>CSK</value>
+   				<value>ICC11</value>
+   				<value>Ranchi</value>
+   			</list>
+   		</property>
+   		
+   		<property name="citiesVisited" >
+   			<set value-type="java.lang.String">
+   			
+   				<value>MUMBAI</value>
+   				<value>CHENNAI</value>
+   				<value>HYDERABAD</value>
+   				<value>BANGALORE</value>
+   				<value>NEW DELHI</value>
+   				<value>MELBOURNE</value>
+   				<value>LORDS</value>
+   				<value>CAPETOWN</value>   			
+   			</set>
+   		</property>
+   		
+   		<property name="totalRunsByYear">
+   			<map key-type="java.lang.String" value-type="java.lang.Integer">
+   				<entry >
+   					<key>
+   						<value>2007</value>
+   					</key>
+   					<value>2567</value>
+   				</entry>
+   				<entry key="2008" value="3245"/>
+   				<entry key="2009" value="2845"/>
+   				<entry key="2010" value="4245"/>
+   			</map>
+   		</property>  	
+   		   		
+   </bean>
+   
+ 
+</beans>
