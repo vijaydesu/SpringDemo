@@ -124,8 +124,132 @@
 	<bean name="zipcodeInteger" class="java.lang.Integer">
 	<constructor-arg index="0" type="java.lang.String" value="${location.zipcode}"/>
 	</bean>
-
 	
 	<!-- END -->
+	
+	<bean name="playerFactoryBean" class="com.test.ioc.PlayerFactoryBean">
+		<property name="player" ref="playerForFactoryBean"/>
+		<property name="increaseBy" >
+			<ref local="rankIncreaseByInteger"/>
+		</property>
+	</bean>
+	
+	<bean name="rankIncreaseByInteger" class="java.lang.Integer">
+	<constructor-arg index="0" type="java.lang.String" value="2100"/>
+	</bean>
+	
+	<!--  Create List, Map, Set using FactoryBeans -->
+	<bean name="teamListUsingFactoryBean" class="org.springframework.beans.factory.config.ListFactoryBean">
+	<property name="targetListClass">
+		<value>java.util.LinkedList</value>
+	</property>
+	<property name="sourceList">
+		<list value-type="java.lang.String">
+   				<value>INDIA</value>
+   				<value>CSK</value>
+   				<value>ICC11</value>
+   				<value>Ranchi</value>
+   				<value>ECCOUNTY</value>
+   		</list>
+	</property>
+	</bean>
+	
+	<bean name="citiesVisitedSetUsingFactoryBean" class="org.springframework.beans.factory.config.SetFactoryBean">
+	<property name="targetSetClass">
+	<value>java.util.TreeSet</value>
+	</property>
+	<property name="sourceSet">
+	 <set value-type="java.lang.String">
+    		<value>KOLKATA</value>
+    		<value>KARACHI</value>
+    		<value>SYDNEY</value>
+    	</set>
+    </property>
+	</bean>
+	
+	<bean name="totalRunsByYearMapUsingFactoryBean" class="org.springframework.beans.factory.config.MapFactoryBean">
+	<property name="targetMapClass">
+	<value>java.util.LinkedHashMap</value>
+	</property>
+	<property name="sourceMap">
+	<map key-type="java.lang.String" value-type="java.lang.Integer">
+   				<entry >
+   					<key>
+   						<value>2007</value>
+   					</key>
+   					<value>2567</value>
+   				</entry>
+   				<entry key="2008" value="3245"/>
+   				<entry key="2009" value="2845"/>
+   				<entry key="2010" value="4245"/>
+   				<entry key="2011" value="3245"/>
+   				<entry key="2012" value="2245"/>
+   			</map>
+	</property>
+	</bean>
+	
+	
+	<!-- END -->
+	
+	<bean name="playerForFactoryBean" class="com.test.ioc.Player">
+	
+		<property name="id" value="4321"/>
+   		<property name="name" value="M S DHONI"/>
+   		<property name="city" value="India" />		
+   		
+   		<property name="teamList" ref="teamListUsingFactoryBean"/>
+   		
+   		<property name="citiesVisited" ref="citiesVisitedSetUsingFactoryBean"/> 			
+   		
+   		<property name="totalRunsByYear" ref="totalRunsByYearMapUsingFactoryBean"/>
+   	
+   	</bean>
+   	
+   	<!-- Create LIST, SET, MAP using Util -->
+   	<util:list id="teamsListUsingUtil" value-type="java.lang.String">
+   				<value>INDIA</value>
+   				<value>CSK</value>
+   				<value>ICC11</value>
+   				<value>Ranchi</value>
+   				<value>ECCOUNTY</value>
+   				<value>WIROCKERS</value>
+   	</util:list>
+	
+	<util:set id="citiesVisitedSetUsingUtil" value-type="java.lang.String">
+    		<value>KOLKATA</value>
+    		<value>KARACHI</value>
+    		<value>SYDNEY</value>
+    		<value>HYDERABAD</value>
+	</util:set>
+	
+	<util:map id="totalRunsByYearMapUsingUtil" key-type="java.lang.String" value-type="java.lang.Integer">
+   				<entry >
+   					<key>
+   						<value>2007</value>
+   					</key>
+   					<value>2567</value>
+   				</entry>
+   				<entry key="2008" value="3245"/>
+   				<entry key="2009" value="2845"/>
+   				<entry key="2010" value="4245"/>
+   				<entry key="2011" value="3245"/>
+   				<entry key="2012" value="2245"/>
+   				<entry key="2013" value="3245"/>
+	</util:map>
  
+ <!-- END -->
+ 
+ <bean name="playerUsingUtil" class="com.test.ioc.Player">
+	
+		<property name="id" value="4321"/>
+   		<property name="name" value="M S DHONI"/>
+   		<property name="city" value="India" />		
+   		
+   		<property name="teamList" ref="teamsListUsingUtil"/>
+   		
+   		<property name="citiesVisited" ref="citiesVisitedSetUsingUtil"/> 			
+   		
+   		<property name="totalRunsByYear" ref="totalRunsByYearMapUsingUtil"/>
+   	
+   	</bean>
 </beans>

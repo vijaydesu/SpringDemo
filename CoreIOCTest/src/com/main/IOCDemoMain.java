@@ -46,11 +46,17 @@ public class IOCDemoMain {
 		println("\n ChildPlayerBeanCollectionMerge : \n"+obj.toString());
 		
 		
-		
 		LocationProps props = (LocationProps) context.getBean("locationFromProperties");
 		println("\n LocationFromProperties : \n"+props.toString());
 		
+				
+		obj = (Player) context.getBean("playerForFactoryBean");
+		println("\nPlayerForFactoryBean : \n"+obj.toString());
 		
+		
+		
+		obj = (Player) context.getBean("playerUsingUtil");
+		println("\nPlayerUsingUtil : \n"+obj.toString());
 	}
 	
 	public static void println(String message){
