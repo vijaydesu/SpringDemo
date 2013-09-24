@@ -252,4 +252,37 @@
    		<property name="totalRunsByYear" ref="totalRunsByYearMapUsingUtil"/>
    	
    	</bean>
+   	
+   	<!--  Singleton Setter -->
+   	
+   	 <bean name="playerBeanSingleton" class="com.test.ioc.Player" scope="singleton">
+   		
+   		<property name="id" value="4321"/>
+   		<property name="name" value="M S DHONI"></property>
+   		<property name="city">
+   		<value>UNITED STATES OF AMERICA</value>
+   		</property>
+   		   		
+   </bean>
+   
+   	<!-- END -->
+   	
+   	<bean name="prototypeRef" class="com.test.ioc.PrototypeRef" scope="prototype">
+   	<property name="pMessage" value="I am prototype message" />
+   	</bean>
+   	
+   	<bean name="singletonDemo" class="com.test.ioc.SingletonDemo" scope="singleton">
+   		
+   		<lookup-method name="createRef" bean="prototypeRef" />
+   		
+   		<property name="message" value="Singleton Message Here !!!"/>
+   		</bean>
+   		
+   	<bean name="singletonDemoWithNonProtoType" class="com.test.ioc.SingletonDemoWithNonProtoType" scope="singleton">
+   		
+   		<property name="prototypeRef" ref="prototypeRef"/>
+   		
+   		<property name="message" value="Singleton Message Here !!!"/>
+   		</bean>
+   		
 </beans>
