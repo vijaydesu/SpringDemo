@@ -39,6 +39,7 @@
    		   		
    </bean>
    
+   <alias name="playerBeanSetter" alias="AliasMain"/>
     <bean name="playerBeanSetter" class="com.test.ioc.Player">
    		
    		<property name="id" value="4321"/>
@@ -284,5 +285,7 @@
    		
    		<property name="message" value="Singleton Message Here !!!"/>
    		</bean>
+   		
+   		<context:annotation-config/>
    		
 </beans>

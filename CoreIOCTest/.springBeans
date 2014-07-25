@@ -8,6 +8,7 @@
 	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
 		<config>resources/SpringBeans.xml</config>
+		<config>resources/TestSpringAOP.xml</config>
 	</configs>
 	<configSets>
 	</configSets>

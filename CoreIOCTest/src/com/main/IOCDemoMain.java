@@ -3,9 +3,14 @@
  */
 package com.main;
 
+import java.math.BigDecimal;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.test.aop.DemoBank;
+import com.test.aop.ReportBank;
+import com.test.fields.FormattingTester;
 import com.test.ioc.LocationProps;
 import com.test.ioc.Player;
 import com.test.ioc.SingletonDemo;
@@ -23,7 +28,8 @@ public class IOCDemoMain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ApplicationContext context = new ClassPathXmlApplicationContext(
-				"SpringBeans.xml");
+				new String[] {"SpringBeans.xml",
+			              "AliasTwo.xml","AliasOne.xml","TestSpringAOP.xml"});
  
 		Player obj = (Player) context.getBean("playerBeanConstructor");
 		println(obj.toString());
@@ -112,6 +118,30 @@ public class IOCDemoMain {
 		
 		println("SingletonDemoWithNonProtoType 6 :\n"+sDemo6);
 		
+		
+		FormattingTester fTester=new FormattingTester();
+		fTester.setPhoneNumber(new BigDecimal("5125506531"));
+		println("Phone No :"+fTester.getPhoneNumber());
+		
+		obj = (Player) context.getBean("AliasMain");
+		println("\n AliasMain : \n"+obj.toString());
+		
+	/**
+	 * Spring AOP Examples
+	 */
+		
+		/*DemoBank demoBankProxy = (DemoBank)context.getBean("demoBankProxy");
+		
+		demoBankProxy.deposit(100);
+		demoBankProxy.getBalance();
+		demoBankProxy.checkBalance(100);
+		*/
+		ReportBank report=(ReportBank)context.getBean("bankReportBean");
+		report.getBalance();
+		report.checkBalance(100);
+		/*demoBankProxy.getBalance();
+		demoBankProxy.withdraw(50);
+		demoBankProxy.getBalance();*/
 		
 		}
 	
